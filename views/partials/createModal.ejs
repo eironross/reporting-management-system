@@ -1,0 +1,45 @@
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header  bg-primary">
+          <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Create Report</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Form Control -->
+          <form action="/submit" class="class" method="POST">
+            <div class="p-1">
+                <label for="exampleFormControlInput1" class="form-label">Date</label>
+                <input type="date" class="form-control" name="date" required>
+                <label for="exampleFormControlInput1" class="form-label">Time</label>
+                <input type="time" class="form-control" name="time" required>
+                <label for="exampleFormControlInput1" class="form-label">Report Title</label>
+                <input type="text" class="form-control" name="title" required>
+                <label for="exampleFormControlInput1" class="form-label">Event Type</label>
+                <select class="form-select" aria-label="Default select example" name="type" required>
+                    <option selected>Select the event type</option>
+                    <option value="Deration">Deration</option>
+                    <option value="Force Outage">Force Outage</option>
+                    <option value="Synchronization">Synchronization</option>
+                    <option value="Maintenance Derating">Maintenance Derating</option>
+                    <option value="Planned Outage">Planned Outage</option>
+                </select>
+                <label for="exampleFormControlInput1" class="form-label">Details</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="details" required></textarea>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>      
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+

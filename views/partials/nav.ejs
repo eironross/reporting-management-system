@@ -1,0 +1,132 @@
+
+
+<!-- Nav bar -->
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold fs-3" href="#">
+        <i
+          class="bi bi-list me-2"
+          id="list-hover"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample"
+        ></i
+        > <%= locals.data ? data : "Error on Data" %>
+      </a>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+
+      <div class="dropdown ms-auto">
+        <button
+          type="button"
+          class="btn btn-secondary text-bg-dark position-relative me-3"
+        >
+          <i class="bi bi-bell-fill"></i>
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            2
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-person-circle"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><h6 class="dropdown-header">Account Settings</h6></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Setting</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </div>
+
+      <div class="topbar-divider d-none d-sm-block"></div>
+      <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+        </div> -->
+    </div>
+  </nav>
+  <!-- Nar bar -->
+
+  <!-- Sidebar -->
+
+  <!-- offcanvas-start -->
+  <div
+    class="offcanvas offcanvas-start sidebar-custom"
+    data-bs-theme="dark"
+    tabindex="-1"
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel"
+  >
+    <!-- <div class="offcanvas-header">
+      <h5 class="offcanvas-title " id="offcanvasExampleLabel">Reporting Tool</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div> -->
+    <div class="offcanvas-body p-0">
+      <nav class="navbar-dark">
+        <ul class="navbar-nav">
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mt-2">
+              CORE
+            </div>
+          </li>
+          <li>
+            <a href="/" class="nav-link px-3 active">
+              <span class="me-2"><i class="bi bi-card-text me-2"></i></span>
+              <span>Dashboard</span></a
+            >
+          </li>
+          <li>
+            <hr />
+          </li>
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3">
+              Interface
+            </div>
+          </li>
+
+          <li>
+            <a href="/report" class="nav-link px-3 mt-2 active">
+              <span class="me-2"
+                ><i class="bi bi-file-earmark-text"></i
+              ></span>
+              <span>View Reports</span></a
+            >
+          </li>
+          <li>
+            <a href="" class="nav-link px-3 mt-2 active">
+              <span class="me-2"><i class="bi bi-graph-up"></i></span>
+              <span>Analysis</span></a
+            >
+          </li>
+          
+          <li>
+            <a href="" class="nav-link px-3 mt-2 active">
+              <span class="me-2"><i class="bi bi-hourglass"></i></span>
+              <span>Status</span></a
+            >
+          </li>
+          <li>
+            <a href="" class="nav-link px-3 mt-2 active">
+              <span class="me-2"><i class="bi bi-chat-dots"></i></span>
+              <span>Messages</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- Sidebar -->

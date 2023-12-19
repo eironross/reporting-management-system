@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+:root {
+    --clr-primary: #4e73df;
+    --clr-infor: #36b9cc;
+    --clr-danger: #e74a3b;
+    --clr-light: #f8f9fc;
+    --clr-sucess: #1cc88a;
+    --clr-warning: #f6c23e;
+    --clr-secondary: #858796;
+    --clr-dark: #5a5c69 ;
+    --offcanvas-width: 250px;
+    --topNavbarHeight: 68px;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Nav buns*/
+#list-hover {
+    transition: all 0.35s ease;
+}
+
+#list-hover:hover{
+    color: #656777;
+}
+
+textarea {
+    resize: none;
+}
+
+/* Sidebar */
+
+.offcanvas {
+    width: var(--offcanvas-width) !important;
+}
+
+
+.nav-link {
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    border-bottom: 2px solid var(--clr-light);
+}
+
+/* Main */
+
+.content {
+    flex: 1;
+    max-width: 100vw;
+    width: 100vw;
+}
+
+
+
+/* Icon Hover */
+.position {
+    position: relative;
+}
+
+.icon-hover {
+    position: absolute;
+    font-size: 1.25rem;
+    transition: all 0.35s ease;
+}
+
+.icon-hover:hover{
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    color: #4d5370;
+}
+
+/* The main content */
+
+.card {
+    box-shadow: 0 0 1rem 0 rgba(34, 46, 60, 0.3);
+    margin-bottom: 24px;
+}
+
+.illustration {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+.text-color {
+    color: var(--bs-light);
+}
+
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Charts */
+
+/* .chartjs-render-monitor {
+    -webkit-animation: chartjs-render-animation 0.001s;
+    animation: chartjs-render-animation 0.001s;
+} */
+
+
+/* Theme Toggler from Dark Mode to Light Mode */
+.theme-toggle {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-65%);
+    text-align: center;
+    z-index: 10;
+    right: 0;
+    left: auto;
+    border: none;
+    background-color: var(--bs-body-color);
+}
+
+html[data-bs-theme="dark"] .theme-toggle .fa-sun,
+html[data-bs-theme="light"] .theme-toggle .fa-moon {
+    cursor: pointer;
+    padding: 10px;
+    display: block;
+    font-size: 1.25rem;
+    color: #FFF;
+}
+
+html[data-bs-theme="dark"] .theme-toggle .fa-moon {
+    display: none;
+}
+
+
+/* Responsiveness Section */
+
+@media (min-width:768px) {
+    .content {
+        max-width: auto;
+        width: auto;
+    }
+}

@@ -1,0 +1,47 @@
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update" id="update-btn" hidden>
+    Launch static backdrop modal
+  </button> -->
+  
+  <!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header  bg-warning">
+        <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Update Report</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form Control -->
+        <form action="/update/<%= id %>" class="class" method="POST">
+          <div class="p-1">
+            
+              <label for="exampleFormControlInput1" class="form-label">Date</label>
+              <input type="date" class="form-control" id="date" name="date" required>
+              <label for="exampleFormControlInput1" class="form-label">Time</label>
+              <input type="time" class="form-control" id="time" name="time" required>
+              <label for="exampleFormControlInput1" class="form-label">Report Title</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+              <label for="exampleFormControlInput1" class="form-label">Event Type</label>
+              <select class="form-select" aria-label="Default select example" id="type" name="type" required>
+                  <option selected>Select the event type</option>
+                  <option value="Deration">Deration</option>
+                  <option value="Force Outage">Force Outage</option>
+                  <option value="Synchronization">Synchronization</option>
+                  <option value="Maintenance Derating">Maintenance Derating</option>
+                  <option value="Planned Outage">Planned Outage</option>
+              </select>
+              <label for="exampleFormControlInput1" class="form-label">Details</label>
+              <textarea type="text"class="form-control" id="details" name="details" rows="4" required></textarea>
+          </div>
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" id="update">Update</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>      
+          </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
