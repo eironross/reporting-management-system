@@ -24,10 +24,7 @@ include('partials/createModal.ejs') %>
     <div class="row">
       <div class="col-12 col-lg-6 d-flex my-2">
         <button class="btn btn-primary py-1 px-2 ms-4" data-bs-toggle="modal" data-bs-target="#create">
-          <i class="bi bi-plus-circle me-1"></i>Create
-        </button>
-        <button class="btn btn-secondary py-1 px-2 ms-2">
-          <i class="bi bi-arrow-up-circle me-1"></i>Update
+          <i class="bi bi-plus-circle me-1"></i>Create Report
         </button>
       </div>
     </div>
@@ -50,78 +47,15 @@ include('partials/createModal.ejs') %>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <% if (locals.reports) { %>
-              <%  reports.forEach((report) => { %>
-                
-                <%# const date = new Date() %>
-                <% const date = new Intl.DateTimeFormat("en-US").format(report.event_date) %>
-                <%# console.log(date) %>
-                <%# const fullDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}` %>
-                <% const id = report.id %>
-                <tr>
-                  <td><%= date %></td>
-                  <td><%= report.event_time %></td>
-                  <td><%= report.report_title %></td>
-                  <td><%= report.event_type %></td>
-                  <td><%= report.details %></td>
-                  <td><%= report.status %></td>
-                  <td>File here</td>
-                  <td>
-                    <%# console.log(report.id) %>
-                    <!-- <form id="form" action="/update/<%# report.id %>"  method="POST"> -->
-                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#update" id="update-btn">
-                        <i class="bi bi-gear-fill"></i>
-                      </button>
-                      
-                    <!-- </form> -->
-                    
-                    <%- include("partials/updateModal.ejs", {id: id}) %>
-                    
-                    
-
-                    <form action="/delete/<%= report.id %>"  method="POST">
-                    <button class="btn" type="submit">
-                      <i class="i bi-trash-fill"></i>
-                    </button>
-                  </form>
-                    
-                  <%- %>
-                  </td>
-                </tr>
-                
-                
-
-              <% }); %>
-          <% } else { %>
-            <tr>
-              <td>No data</td>
-              <td>No data</td>
-              <td>No data</td>
-              <td>No data</td>
-              <td>No data</td>
-              <td>No data</td>
-              <td>No data</td>
-              <td><i class="bi bi-trash"></i></td>
-            </tr>
-            <% } %>
-          </tbody>
-          <!-- <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </tfoot> -->
+          <!-- <tbody id="myTable">
+          
+          </tbody> -->
+          <%-include("partials/updateModal.ejs")%>
+          <%-include("partials/deleteModal.ejs")%>
         </table>
       </div>
     </div>
   </div>
 </main>
-
-
 
 <%- include('partials/footer.ejs') %>

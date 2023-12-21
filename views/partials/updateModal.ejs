@@ -2,9 +2,7 @@
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update" id="update-btn" hidden>
     Launch static backdrop modal
   </button> -->
-  
-  <!-- Modal -->
-<!-- Modal -->
+
 <div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -14,9 +12,9 @@
       </div>
       <div class="modal-body">
         <!-- Form Control -->
-        <form action="/update/<%= id %>" class="class" method="POST">
+        <form action="/update" class="class" method="POST">
           <div class="p-1">
-            
+              <input type="text" id="update_id" name="update_id" hidden/>
               <label for="exampleFormControlInput1" class="form-label">Date</label>
               <input type="date" class="form-control" id="date" name="date" required>
               <label for="exampleFormControlInput1" class="form-label">Time</label>

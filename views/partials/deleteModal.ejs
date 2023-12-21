@@ -1,0 +1,29 @@
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update" id="update-btn" hidden>
+    Launch static backdrop modal
+  </button> -->
+
+<div class="modal fade" id="delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header  bg-danger">
+        <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Delete Report</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form Control -->
+        <form action="/delete" class="class" method="POST">
+          <div class="p-1">
+              <input type="text" id="delete_id" name="delete_id" hidden/>
+              <p>The report will be deleted from the system. Are you sure to delete this report?</p>
+          </div>
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-danger" id="delete">Delete</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>      
+          </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
