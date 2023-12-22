@@ -1,7 +1,9 @@
 .DS_Store
 .env
 fakereport.xlsx
-reports.csv
+test.js
+./views/test.ejs
+./views/partials/copy.html
 
 
 

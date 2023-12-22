@@ -1,6 +1,6 @@
 var table = new DataTable("#example", {
   ajax: {
-    url: "/load",
+    url: "/report/load",
     dataSrc: "data",
   },
   columns: [
@@ -80,15 +80,6 @@ table.on("click", "#delete-btn", (e) => {
   document.getElementById("delete_id").value = data.id;
   console.log(`Delete button was clicked`);
 });
-
-
-// toast when the report will be craeted
-var saveReport =  document.getElementById("save-report")
-var createToast = document.getElementById("create-toast")
-
-saveReport.addEventListener("click", function() {
-  createToast.show();
-})
 
 
 //   `${date.getFullYear()}-${(date.getMonth()+1)}-${date.getDate()}`
