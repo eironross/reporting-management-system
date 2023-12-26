@@ -1,0 +1,29 @@
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update" id="update-btn" hidden>
+    Launch static backdrop modal
+  </button> -->
+
+<div class="modal fade" id="download" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header  bg-success">
+        <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Download Report</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form Control -->
+        <form action="/report/download" class="class" method="POST">
+          <div class="p-1">
+              <input type="text" id="download_id" name="download_id" hidden/>
+              <p id="report_title">No data</p>
+          </div>
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-success" id="download">Download</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>      
+          </div>
+      </form>
+      
+    </div>
+  </div>
+</div>

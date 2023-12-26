@@ -36,13 +36,13 @@ var table = new DataTable("#example", {
       defaultContent:
         '<div class="d-flex">\
         <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#update" id="update-btn"><i class="bi bi-gear-fill"></i></button>\
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" id="delete-btn"><i class="bi bi-trash-fill"></i></button\
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" id="delete-btn"><i class="bi bi-trash-fill"></i></button>\
         <div>',
       targets: -1,
     },
     {
       data: null,
-      defaultContent: "File Here",
+      defaultContent: `<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#download" id="download-btn"><i class="bi bi-file-earmark-pdf-fill"></button>`,
       targets: -2,
     },
     {
@@ -80,6 +80,33 @@ table.on("click", "#delete-btn", (e) => {
   document.getElementById("delete_id").value = data.id;
   console.log(`Delete button was clicked`);
 });
+
+table.on("click", "#download-btn", (e) => {
+  let data = table.row(e.target.closest("tr")).data();
+  //   Passing Value to the Modal
+  const date = new Date(data["event_date"]);
+  const dateString = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+    .toISOString()
+    .split("T")[0];
+  document.getElementById("report_title").innerHTML = `The file ${data.report_title} at ${data.event_time} of ${dateString} is selected. Are you sure to download this file?`
+  document.getElementById("download_id").value = data.id;
+  console.log(`Download button was clicked`);
+});
+
+
+
+// table.on("click", "#download-btn", (e) => {
+//   let data = table.row(e.target.closest("tr")).data();
+//   //   Passing Value to the Modal
+//   console.log("I got clicked")
+//   const link = document.createElement("a")
+//   link.href = `/download/${data.id}`
+//   document.body.appendChild("a");
+//   link.click();
+//   document.body.removeChild("a");
+//   console.log(`Sending request for download & button was clicked`);
+// });
+
 
 
 //   `${date.getFullYear()}-${(date.getMonth()+1)}-${date.getDate()}`

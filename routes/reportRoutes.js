@@ -5,6 +5,7 @@ import {
     update_report,
     delete_report,
     home_report,
+    download_file,
   } from  "../controllers/reportController.js"
 const router = express.Router();
 
@@ -22,5 +23,7 @@ router.post("/submit", create_report );
 router.post("/update", update_report );
 
 router.post("/delete", delete_report);
+
+router.post("/download", download_file)
 
 export default router;
