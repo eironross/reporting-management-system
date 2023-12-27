@@ -1,11 +1,5 @@
 .DS_Store
 .env
-fakereport.xlsx
-test.js
-./views/test.ejs
-./views/partials/copy.html
-pdf_test.js
-
 
 
 # Logs

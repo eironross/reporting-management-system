@@ -42,8 +42,9 @@ var table = new DataTable("#example", {
     },
     {
       data: null,
-      defaultContent: `<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#download" id="download-btn"><i class="bi bi-file-earmark-pdf-fill"></button>`,
+      defaultContent: `<button class="btn btn-success" id="download-btn" type="submit"><i class="bi bi-file-earmark-pdf-fill"></button>`,
       targets: -2,
+      // TODO: Problem at the download button
     },
     {
       data: "report_title",
@@ -83,53 +84,10 @@ table.on("click", "#delete-btn", (e) => {
 
 table.on("click", "#download-btn", (e) => {
   let data = table.row(e.target.closest("tr")).data();
-  //   Passing Value to the Modal
-  const date = new Date(data["event_date"]);
-  const dateString = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
-    .toISOString()
-    .split("T")[0];
-  document.getElementById("report_title").innerHTML = `The file ${data.report_title} at ${data.event_time} of ${dateString} is selected. Are you sure to download this file?`
-  document.getElementById("download_id").value = data.id;
-  console.log(`Download button was clicked`);
+  const a = document.createElement("a");
+  console.log(data.id)
+  a.href = `/report/download/${data.id}`;
+  document.body.appendChild(a);
+  a.click()
+  document.body.removeChild(a);
 });
-
-
-
-// table.on("click", "#download-btn", (e) => {
-//   let data = table.row(e.target.closest("tr")).data();
-//   //   Passing Value to the Modal
-//   console.log("I got clicked")
-//   const link = document.createElement("a")
-//   link.href = `/download/${data.id}`
-//   document.body.appendChild("a");
-//   link.click();
-//   document.body.removeChild("a");
-//   console.log(`Sending request for download & button was clicked`);
-// });
-
-
-
-//   `${date.getFullYear()}-${(date.getMonth()+1)}-${date.getDate()}`
-// $(document).ready( function () {
-//     var table = $('#example').DataTable({
-//       columnDefs: [{
-//           "targets": 1,
-//           "type": 'date',
-//        }]
-//     });
-//   } );
-
-// const btn = document.getElementById("id")
-
-//   btn.addEventListener("click", async () => {
-//     try {
-//       var myModal = new bootstrap.Modal(document.getElementById("update"))
-//       myModal.show()
-//       document.getElementById("date").valueAsDate = new Date("<%= data.event_date  %>")
-//       document.getElementById("details").innerHTML = "<%= data.details %>"
-//       document.getElementById("type").innerHTML = "<%= data.type %>"
-//     } catch(error) {
-//       console.log(error)
-//     }
-
-//   })

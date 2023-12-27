@@ -24,6 +24,6 @@ router.post("/update", update_report );
 
 router.post("/delete", delete_report);
 
-router.post("/download", download_file)
+router.get("/download/:id", download_file)
 
 export default router;
