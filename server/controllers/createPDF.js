@@ -28,7 +28,7 @@ export const create_pdf = async (data) => {
                   format: "A4",
                   displayHeaderFooter: false,
                   printBackground: true,
-                  path: `./tmp/${data.title}_${data.date}.pdf`,
+                  path: `./tmp/${data.title}_${data.date.split("-").join("")}.pdf`,
                 });
         console.log("done pdf generation")
         await browser.close();

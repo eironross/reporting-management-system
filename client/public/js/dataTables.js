@@ -75,6 +75,55 @@ table.on("click", "#update-btn", (e) => {
   console.log("Event Occurred");
 });
 
+
+
+const formSubmit = () => {
+  const form = document.getElementById("form-create")
+  console.log(form)
+
+  form.addEventListener("submit", (e) => {
+
+    console.log(e)
+  
+    // let data = table.row(e.target.closest("tr")).data();
+    // const date = new Date(data["event_date"]);
+    // const dateString = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+    //   .toISOString()
+    //   .split("T")[0];
+  
+    // const url = `http://localhost:8000/report/submit`
+  
+    // const payload = {
+    //     id: data.id, 
+    //     date: dateString,
+    //     time: data.event_time,
+    //     title: data.title,
+    //     type: data.event_type,
+    //     details: data.details
+    //     }
+  
+    //  const options = {
+    //     methods: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(payload)
+    //  }   
+  
+    // const response = await fetch(url, options)
+  
+    // if (!response) {
+    //   console.log(response.status)
+    // }
+  
+    // console.log("Sucessfully send the data from the frontend to backend")
+  
+  })
+}
+
+
+
+
 table.on("click", "#delete-btn", (e) => {
   let data = table.row(e.target.closest("tr")).data();
   //   Passing Value to the Modal
