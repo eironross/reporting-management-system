@@ -75,55 +75,6 @@ table.on("click", "#update-btn", (e) => {
   console.log("Event Occurred");
 });
 
-
-
-const formSubmit = () => {
-  const form = document.getElementById("form-create")
-  console.log(form)
-
-  form.addEventListener("submit", (e) => {
-
-    console.log(e)
-  
-    // let data = table.row(e.target.closest("tr")).data();
-    // const date = new Date(data["event_date"]);
-    // const dateString = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
-    //   .toISOString()
-    //   .split("T")[0];
-  
-    // const url = `http://localhost:8000/report/submit`
-  
-    // const payload = {
-    //     id: data.id, 
-    //     date: dateString,
-    //     time: data.event_time,
-    //     title: data.title,
-    //     type: data.event_type,
-    //     details: data.details
-    //     }
-  
-    //  const options = {
-    //     methods: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(payload)
-    //  }   
-  
-    // const response = await fetch(url, options)
-  
-    // if (!response) {
-    //   console.log(response.status)
-    // }
-  
-    // console.log("Sucessfully send the data from the frontend to backend")
-  
-  })
-}
-
-
-
-
 table.on("click", "#delete-btn", (e) => {
   let data = table.row(e.target.closest("tr")).data();
   //   Passing Value to the Modal
@@ -131,12 +82,25 @@ table.on("click", "#delete-btn", (e) => {
   console.log(`Delete button was clicked`);
 });
 
-table.on("click", "#download-btn", (e) => {
+table.on("click", "#download-btn", async (e) => {
   let data = table.row(e.target.closest("tr")).data();
-  const a = document.createElement("a");
-  console.log(data.id)
-  a.href = `/report/download/${data.id}`;
-  document.body.appendChild(a);
-  a.click()
-  document.body.removeChild(a);
+
+  const url = `http://localhost:8000/report/download/${data.id}`
+
+  const response = await fetch(url)
+  console.log(response)
+  if (response.status == 404) {
+    alert(`PDF report for ${data.id} is not available`)
+  }
+  const { report } = await response.json()
+
+  const base64String = "data:application/pdf;base64," + report.data
+
+  const link = document.createElement('a');
+  link.href = base64String;
+  link.download = `${report.title}_${report.date}.pdf`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
 });

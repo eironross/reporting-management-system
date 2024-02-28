@@ -71,7 +71,8 @@ export const create_report = async (req, res) => {
     const path = `./tmp/${title}_${date.split("-").join("")}.pdf`
     // The function to create binary data
     const buf = fs.readFileSync(path);
-    const file = new Buffer.from(buf);
+
+    const file = new Buffer.from(buf, "utf8").toString('base64');
 
     // Delete the pdf
     fs.unlinkSync(path, (error) => console.log("Error:", error));
@@ -129,8 +130,7 @@ export const update_report = async (req, res) => {
 
     const buf = fs.readFileSync(path);
 
-    const file = new Buffer.from(buf);
-
+    const file = new Buffer.from(buf, "utf8").toString('base64');
     // Delete the the pdf
     fs.unlinkSync(path, (error) => console.log("Error:", error));
 
@@ -142,11 +142,9 @@ export const update_report = async (req, res) => {
 
       values: [title, type, details, date, time, file, report_id]
     }
-
     await db.query(query);
 
-    console.log(`Sucessfully updated the report: ${report_id} redirecting...`
-    );
+    console.log(`Sucessfully updated the report: ${report_id} redirecting...`);
 
     res.redirect("/report");
 
@@ -200,7 +198,7 @@ export const download_file = async (req, res) => {
     const { file_pdf, event_date, report_title } = result.rows[0];
 
     // Checking if the file_pdf exist on the Database
-    if (!file_pdf) return res.send({message: JSON.stringify(file_pdf)});
+    if (!file_pdf) return res.status(404).send({message: file_pdf});
     
     const date = new Date(event_date);
     const dateString = new Date(
@@ -208,22 +206,21 @@ export const download_file = async (req, res) => {
     )
       .toISOString()
       .split("T")[0];
+    
+    
+    console.log(file_pdf)
+    // const path = `./tmp/${report_title}_${dateString}.pdf`;
 
 
-    const path = `./tmp/${report_title}_${dateString}.pdf`;
-
-    fs.writeFileSync(path, file_pdf, "base64", (error) => {
-      console.log("Error:", error);
-    });
-
+    const plain = new Buffer.from(file_pdf, "base64").toString("utf8")
     console.log(`Download is process with id of: `, report_id);
 
-    // TODO: Problem when downloading file and removing the file from the tmp. Not able to redirect when download
-    // Resolved for the tmp. Added a callback function on the res.download to unlink data from tmp after downloading
+    res.status(200).send({report: {
+      data: plain,
+      title: report_title,
+      date: dateString
 
-    // TODO: send the binary data to the client side then create the file from there
-    // TODO: binary data to url blob?
-    res.send({report: JSON.stringify(file_pdf)});
+    }});
   
   } catch (error) {
 
